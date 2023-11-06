@@ -3,6 +3,14 @@ require_relative "/poly_node_tree/tree_node.rb"
 # Class Constants knight moves based on gird position
 
 class KnightPathFinder
+
+    MOVES = [
+        [-1, 2], [1, 2]
+        [-2, 1], [2, 1]
+        [-2, -1], [2, -1]
+        [-1, -2], [1, -2]
+    ].freeze
+
     def initialize(start)
         @start = start
     
@@ -18,4 +26,4 @@ class KnightPathFinder
 
 end
 
-kpf = KnightPathFinder.new([0, 0])
+# kpf = KnightPathFinder.new([0, 0])
