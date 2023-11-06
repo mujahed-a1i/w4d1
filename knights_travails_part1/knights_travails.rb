@@ -18,7 +18,22 @@ class KnightPathFinder
     end
     
     def build_move_tree
-        
+
+        queue = [@root_node]
+
+        until queue.empty?
+            shifted = queue.shift
+
+            arr = new_move_positions(shifted.value)
+
+            arr.each do |el|
+                @root_node.add_child(el)
+                queue << el
+            end
+
+
+        end
+
     end
 
     def find_path(position)
@@ -42,15 +57,14 @@ class KnightPathFinder
 
     def new_move_positions(pos)
         valid = KnightPathFinder.valid_moves(pos)
+        new_arr = []
         valid.each do |move| 
             if !@considered_positions.include?(move)
-                @considered_positions << move
+                new_arr << move
             end
+            @considered_positions += new_arr
         end
-        @considered_positions
+        new_arr
     end
 
 end
-
-kpf = KnightPathFinder.new([0, 0])
-p KnightPathFinder.valid_moves(kpf.start)
